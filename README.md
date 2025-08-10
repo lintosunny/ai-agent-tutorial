@@ -55,6 +55,9 @@ Introduced by Google, it allows agents to discover, communicate, and delegate ta
 
 ![A2A](images/a2a.png)
 
+## Evaluation
+
+
 
 
 ## Installation
@@ -90,4 +93,5 @@ GROQ_API_KEY=your_groq_api_key_here
 GOOGLE_API_KEY=your_gemini_api_key_here
 ```
 
-©️ Credits: OpenAI, Anthropic, Google, and Codebasics
+
+©️Credits: OpenAI, Anthropic, Google, Agno, and Codebasics
