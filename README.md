@@ -21,6 +21,32 @@ Gen AI is a component in agentic AI. Gen AI can create new content and and agent
 
 ![agentic_ai](images/agentic_ai.png)
 
+**When to consider creating multi agent system**: General recommendation is to maximize a single agent's capability first. More agents can provide intutive separation of concepts, but can introduce additional complexity and overhead. practical guidelines for splitting agents include;
+* ***complex logic***: When prompts contain many conditional statements (multiple if-then-else branches), and prompt templates get
+difficult to scale, consider dividing each logical segment across separate agents.
+* ***Tool overload***: The issue isn’t solely the number of tools, but their similarity or overlap. Some implementations successfully manage more than 15 well-defined, distinct tools while others struggle with fewer than 10 overlapping tools.
+
+### Multi-agent systems categories
+**Manager (agents as tools)**:A central “manager” agent coordinates multiple specialized agents via tool calls, each handling a specific task or domain.
+
+![multi_agent_manager](images/multi_agent_manager.png)
+
+**Decentralized (agents handling off to agents)**: Multiple agents operate as peers, handing off tasks to one another based on their specializations.
+
+![multi_agent_decentralized](images/multi_agent_decentralized.png)
+
+## Model context Protocol (MCP)
+MCP allows applications to provide context for LLMs in a standadized way, separating the concerns of providing context from the actual LLM interaction.
+
+Think of it as a web API, but specifically designed for LLM interactions.
+
+MCP is like a USB-C port for computers where we get a unified and standard way to connect to MCP servers. 
+
+* **MCP server**: Refers to a server that implements the Model Context Protocol (MCP). Any MCP server exposes three categories: Tools, Resources, and Prompts.
+* **MCP host**: The environment or platform that runs MCP clients and manages communication with MCP servers.
+* **MCP client**: The component within the host that connects to an MCP server to use its Tools, Resources, and Prompts.
+
+![mcp](images/mcp.png)
 
 ## Installation
 
