@@ -56,8 +56,34 @@ Introduced by Google, it allows agents to discover, communicate, and delegate ta
 ![A2A](images/a2a.png)
 
 ## Evaluation
+Traditional computer programs are deterministic and AI systems are probabilistic. Because of the generative and dynamic nature of Gen AI, multi-turn approach along with dynamic tool calls make testing agentic AI systems challenging.
+
+Core dimensions of agentic AI evaluation;
+* **Functional**: *Did the agent complete the task correctly.*
+* **Safety**: *Can the agent be trusted in the open environments.*
+* **Operational**: *Is the agent cost-effective and responsive.*
+
+### Functional
+Testing the system for its functionality and accuracy of the output. Text based evaluation can be compared by comparing expected output with actual output using metrics such as consine similarity, BELU/ROUGE score, LLM as a judge, etc.
+
+```
+def test_order_placement():
+    actual = run_agent("order 2 lenovo laptops")
+    expected = {"tool":"place_order", "params":{"item":"lenovo laptop", "qty":2}}
+    assert acutal==expected, "order placement failed"
+```
+### Safety
+Safety is not optional but foundational in agentic AI systems as they can trigger actions (place orders, update db), access sensitive data (employee details, financial details)
+
+| Risks    | Mitigation Strategies |
+|---------------|-----------------------|
+| **Jailbreak** | Enforce input character limits<br>Blacklist unnecessary tools<br>Use regex to detect sensitive information (e.g., PII)<br>Apply moderation LLM checks<br>Validate outputs before delivery |
+| **Tool Misuse** | Implement tool whitelisting per role<br>Add pre-execution validators<br>Enable tool-level logging and monitoring<br>Enforce schema and parameter validation<br>Use agent fingerprinting for accountability |
+| **Hallucinations** | Use Retrieval-Augmented Generation (RAG)<br>Implement Human-in-the-Loop (HITL) review<br>Apply output validation checks |
 
 
+### Operational
+Metrics to track response time, tool usage, user satisfaction score, task success %, tool failure rate, etc.
 
 
 ## Installation
